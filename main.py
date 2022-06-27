@@ -13,7 +13,7 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/get_data")
+@app.post("/get_data")
 def get_data(z:Zoho):
     print(z)
     return {"OK":"OK"}
