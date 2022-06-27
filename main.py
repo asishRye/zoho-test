@@ -20,15 +20,16 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 
 
 class Zoho(BaseModel):
-	data:str
-
+	pass
 @app.get("/")
 def read_root():
 	return {"Hello": "World"}
 
 
 @app.post("/get_data")
-def get_data(z:Zoho):
-	print(z)
+async def  get_data(z:Zoho, req: Request):
+	a = await req.body()
+	print(a)
+
 	return {"OK":"OK"}
 
