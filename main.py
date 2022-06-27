@@ -5,8 +5,7 @@ from pydantic import BaseModel
 app = FastAPI()
 
 class Zoho(BaseModel):
-    interviewer_id: str 
-    interviewer_email: str 
+    data:str
 
 @app.get("/")
 def read_root():
