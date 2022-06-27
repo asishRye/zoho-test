@@ -13,20 +13,22 @@ app = FastAPI()
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
 	exc_str = f'{exc}'.replace('\n', ' ').replace('   ', ' ')
 	logging.error(f"{request}: {exc_str}")
+	print(exc_str)
 	content = {'status_code': 10422, 'message': exc_str, 'data': None}
+	
 	return JSONResponse(content=content, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 
 class Zoho(BaseModel):
-    data:str
+	data:str
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+	return {"Hello": "World"}
 
 
 @app.post("/get_data")
 def get_data(z:Zoho):
-    print(z)
-    return {"OK":"OK"}
+	print(z)
+	return {"OK":"OK"}
 
